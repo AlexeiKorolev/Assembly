@@ -132,7 +132,5 @@ In assembly translation:
 In testing:
         Are statement tests supposed to test every combination
 
-        What we need to do:
-                Make sure that files are named differently and not overwriting (use loop incrementer different than incrementer to make files)
-                Stress tests
+        Do we need multiple stress tests (is the one stress test that we have good)
 
