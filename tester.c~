@@ -1,0 +1,49 @@
+/* TESTS TO ADD:
+ * empty file
+ * 1 character no spaces
+ * 2 /n
+ * 2 space characters
+ * \s a \n \s 
+ * 5 characters no whitespace
+ */
+
+
+
+#include <stdio.h>
+#include <ctype.h>
+
+
+
+int main(void)
+{
+   char* tests[] = {
+      "",
+      "a",
+      "\n\n",
+      "  ",
+      " a\n ",
+      "abcde"
+   };
+   char inputString[10];
+   FILE * file;
+   size_t i = 0;
+
+   while(i < sizeof(tests)/8) {
+      sprintf(inputString, "mywc%d", (int) i);
+      file = fopen(inputString,"w");
+      fprintf(file, tests[i]);
+
+      i += 1;
+   }
+
+
+   
+
+   
+
+   
+   fclose(file);
+
+   return 0;
+   
+}
