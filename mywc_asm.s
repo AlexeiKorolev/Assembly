@@ -1,9 +1,7 @@
 /*--------------------------------------------------------------------*/
-/* mywc.s                                                            */
-/* Author: Venkat Subramanian and Alexei Korolev                                                */
+/* mywc.s                                                             */
+/* Author: Venkat Subramanian and Alexei Korolev                      */
 /*--------------------------------------------------------------------*/
-
-
         
         .equ FALSE, 0
         .equ TRUE, 1
