@@ -3,12 +3,12 @@ Assignment 5 readme File
 ------------------------------------------------------------------------
 Student 1: What is your name?
 
-
+Venkat Subramanian
 
 ------------------------------------------------------------------------
 Student 2: What is your name?
 
-
+Alexei Korolev
 
 ------------------------------------------------------------------------
 Student 1: What authorized sources of information did you use to
@@ -104,9 +104,9 @@ What is your mywc program test plan?
 What are the CPU times consumed by the programs from Parts 2a, 2b, 2d,
 2e, and 2f to compute fib(250000) on armlab? Fill in the blanks.
 
-Part 2a:  _____ seconds
+Part 2a:  11.961856 seconds
 
-Part 2b:  _____ seconds
+Part 2b:   2.615389 seconds
 
 Part 2d:  _____ seconds
 
@@ -116,4 +116,21 @@ Part 2f:  _____ seconds
 
 
 
+
+
+
+Questions to ask:
+How does format string work
+
+In assembly translation:
+    Did we do fprintf correctly?
+    What is .size main, (, - main) at the end
+    What are all the special registers (x30, etc.)
+    What is MAIN_STACK_BYTECOUNT and why is it 16
+
+
+In testing:
+        Are statement tests supposed to test every combination
+
+        Do we need multiple stress tests (is the one stress test that we have good)
 
