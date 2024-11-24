@@ -39,21 +39,21 @@ BigInt_larger:
         // goto endif;
         ldr x0, [sp, lLength1] 
         str x0, [sp, lLarger]
-        b endif
+        b endif1
 
 startelse1:
         // lLarger = lLength2;
         ldr x0, [sp, lLength2] 
         str x0, [sp, lLarger]
 
-endif:  
+endif1:  
         ldr x0, [sp, lLarger]
         ldr x30, [sp]
         add sp, sp, LARGER_STACK_BYTECOUNT
         
         ret
 
-        .size BigInt_larger (. - BigInt_larger)
+        .size BigInt_larger, (. - BigInt_larger)
 
         .global BigInt_add
 BigInt_add:
@@ -107,8 +107,9 @@ BigInt_add:
 
         ldr x1, 0
 
-        ldr x2, MAX_DIGITS
-        mul x2, x2, SIZE_OF_UNSIGNED_LONG
+        mov x2, MAX_DIGITS
+        mov x15, SIZE_OF_UNSIGNED_LONG
+        mul x2, x2, x15
 
         bl memset
 
@@ -120,7 +121,7 @@ endif:
         str x0, [sp, ulCarry]
 
         //ulCarry = 0;
-        ldr x1, [sp, lIndex]]
+        ldr x1, [sp, lIndex]
         mov x1, 0
         str x0, [sp, lIndex]
 
@@ -143,7 +144,7 @@ loop1:
 
         
         //ulSum += oAddend1->aulDigits[lIndex];
-        ldr x0, [sp. ulSum]
+        ldr x0, [sp, ulSum]
         ldr x1, [sp, lIndex]
         add x1, x1, 1 // To skip over lLength
         ldr x2, [sp, oAddend1]
@@ -163,7 +164,7 @@ loop1:
 
 endif2:
         //ulSum += oAddend2->aulDigits[lIndex];
-        ldr x0, [sp. ulSum]
+        ldr x0, [sp, ulSum]
         ldr x1, [sp, lIndex]
         add x1, x1, 1 // To skip over lLength
         ldr x2, [sp, oAddend2]
@@ -175,7 +176,7 @@ endif2:
 
         //if (ulSum >= oAddend2->aulDigits[lIndex]) goto endif2;
         cmp x0, x3
-        bge endif2
+        bge endif3
 
         //ulCarry = 1;
         mov x0, 1
@@ -191,7 +192,7 @@ endif3:
 
 
         //lIndex++;
-        ldr x0, [sp, lIndex[
+        ldr x0, [sp, lIndex]
         add x0, x0, 1
         str x0, [sp, lIndex]
 
@@ -233,10 +234,10 @@ endif4:
 
         mov w0, TRUE
         ldr x30, [sp]
-        add sp, sp ADD_STACK_BYTECOUNT
+        add sp, sp, ADD_STACK_BYTECOUNT
         ret
         
-        .size BigInt_add (. - BigInt_add)
+        .size BigInt_add, (. - BigInt_add)
         
 
         

@@ -21,12 +21,11 @@ static long BigInt_larger(long lLength1, long lLength2)
    
    if (lLength1 <= lLength2) goto startelse1;
       lLarger = lLength1;
-      goto endif;
+      goto endif1;
   startelse1:
       lLarger = lLength2;
-      goto endif;
 
-  endif: 
+  endif1: 
    return lLarger;
 }
 
