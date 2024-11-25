@@ -120,7 +120,7 @@ endif:
         mov x0, 0
         str x0, [sp, ulCarry]
 
-        //ulCarry = 0;
+        // lIndex = 0;
         ldr x1, [sp, lIndex]
         mov x1, 0
         str x0, [sp, lIndex]
@@ -156,7 +156,7 @@ loop1:
 
         //if (ulSum >= oAddend1->aulDigits[lIndex]) goto endif2;
         cmp x0, x3
-        bge endif2
+        bhs endif2
 
         //ulCarry = 1;
         mov x0, 1
@@ -176,7 +176,7 @@ endif2:
 
         //if (ulSum >= oAddend2->aulDigits[lIndex]) goto endif2;
         cmp x0, x3
-        bge endif3
+        bhs endif3
 
         //ulCarry = 1;
         mov x0, 1
@@ -201,11 +201,14 @@ endif3:
 
 endloop1:
 
+        //if (ulCarry != 1) goto endif4;
         ldr x0, [sp, ulCarry]
         mov x1, 1
         cmp x0, x1
         bne endif4
 
+        
+        //if (lSumLength != MAX_DIGITS) goto endif5;
         ldr x0, [sp, lSumLength]
         mov x1, MAX_DIGITS
         cmp x0, x1
@@ -217,11 +220,18 @@ endloop1:
         ret
 
 endif5:
+        /*
         mov x0, 1
         ldr x1, [sp, oSum]
         ldr x2, [sp, lSumLength]
         add x2, x2, 1
-        str x0, [x1, x2, lsl #3]
+        str x0, [x1, x2, lsl #3]*/
+
+        mov x0, 1
+        ldr x1, [sp, oSum]
+        ldr x2, [sp, lSumLength]
+        add x1, x1, 8
+        str x0, [x1, x2, lsl 3]
 
         ldr x2, [sp, lSumLength]
         add x2, x2, 1
