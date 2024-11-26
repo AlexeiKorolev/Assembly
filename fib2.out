@@ -1,10 +1,10 @@
 ------------------------------------------------
-Fibonacci number 1:
+Fibonacci number 2:
 0000000000000001
 ------------------------------------------------
 Boundary test 1: 0000000000000000
 Boundary test 2a: 0000000000000000
-Boundary test 2b: 0101010111010101
+Boundary test 2b: 0000000100000000
 Boundary test 3a: fffffffffffffffe
 Boundary test 3b: fffffffffffffffe
 Boundary test 4a: ffffffffffffffff
@@ -24,11 +24,11 @@ Boundary test 10: Addition overflow
 Stress test 0a: 073e647be13faa58...64c479737dc8ec5b
 Stress test 0b: a60cefb66aed1818...c9ab65575a490c6e
 Stress test 1a: 0ad5947ae0a9f1fa...a1b819246e050876
-Stress test 1b: b019b269e7029fab...1b14802103346453
+Stress test 1b: af18b168e6019eaa...1b14802103346453
 Stress test 2a: 5937030f2f7ad344...248710ce7c6df358
 Stress test 2b: 5937030f2f7ad344...753a6e55393c8870
 Stress test 3a: d9c4fc9c505f783d...0c814fd407c80b77
-Stress test 3b: 29dae8fe466760b9...0143a4f128309074
+Stress test 3b: 28d9e7fd45665fb8...0143a4f128309074
 Stress test 4a: 0953992d1a4125df...a9a837769af722a0
 Stress test 4b: 3041083853998642...2eb62b23771bea9f
 Stress test 5a: f2bf6d7551015c82...776d1307f08078b4
@@ -44,7 +44,7 @@ Stress test 9b: 90e9ab217f2ae485...05d3a8afdf6e2a7e
 Stress test 10a: 1e69a2ecaed0e102...a2d2f1b102532f5c
 Stress test 10b: 1e69a2ecaed0e102...e59ce09ab777c580
 Stress test 11a: 65b9017c0a7a1521...52220441d01fc532
-Stress test 11b: e33fead523af8a61...b8f6d96431f28835
+Stress test 11b: e23ee9d422ae8960...b8f6d96431f28835
 Stress test 12a: 88a0af09015c8b68...58cdea5024b8ad0f
 Stress test 12b: 88a0af09015c8b68...4abf3e07523c5d9a
 Stress test 13a: 14dc344deef5fc70...9de88ea6b2a29a61
@@ -52,7 +52,7 @@ Stress test 13b: 14dc344deef5fc70...0ec1fd1fe483b917
 Stress test 14a: 3348019b0693b721...9731295974d4a0ed
 Stress test 14b: 3348019b0693b721...c88c65334ef26be9
 Stress test 15a: 91e71c27002b9cd0...0b478c3bfffd155e
-Stress test 15b: aadce647becb240e...99f1bf3b08f389f4
+Stress test 15b: a9dbe546bdca230d...99f1bf3b08f389f4
 Stress test 16a: 9f82643e50eaba16...d7c50e0984d1123f
 Stress test 16b: 9f82643e50eaba16...8b0901591c05e2a4
 Stress test 17a: aeb9a06041b9c4ba...024e47203ad5ff82

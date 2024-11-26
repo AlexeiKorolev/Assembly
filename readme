@@ -134,3 +134,4 @@ In testing:
 
         Do we need multiple stress tests (is the one stress test that we have good)
 
+QUESTION: Why are we accessing an out-of-bounds index? We get something non-zero, and it seems that it isnt an asm problem

@@ -1,10 +1,10 @@
 ------------------------------------------------
-Fibonacci number 1:
+Fibonacci number 2:
 0000000000000001
 ------------------------------------------------
 Boundary test 1: 0000000000000000
 Boundary test 2a: 0000000000000000
-Boundary test 2b: 0000000010000000
+Boundary test 2b: 0000000100000000
 Boundary test 3a: fffffffffffffffe
 Boundary test 3b: fffffffffffffffe
 Boundary test 4a: ffffffffffffffff

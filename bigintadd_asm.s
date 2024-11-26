@@ -170,13 +170,26 @@ loop1:
         str x0, [sp, ulCarry]
 
 endif2:
+        // check if lIndex >= oAddend2->lLength
+        mov x3, 0
+        ldr x5, [sp, lIndex]
+        ldr x1, [sp, oAddend2]
+        ldr x1, [x1]
+        
+        
+
+        
         //ulSum += oAddend2->aulDigits[lIndex];
+        
         ldr x0, [sp, ulSum]
+        cmp x5, x1
+        bge dontSetValue
         ldr x1, [sp, lIndex]
         add x1, x1, 1 // To skip over lLength
         ldr x2, [sp, oAddend2]
         ldr x3, [x2, x1, lsl #3] // load into x3, whatever the value stored at x2 + (x1 * 8) is
 
+dontSetValue:   
         add x0, x0, x3
 
         str x0, [sp, ulSum]

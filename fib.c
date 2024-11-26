@@ -138,7 +138,8 @@ static void boundaryTest(void)
          printf("Addition overflow");
       putchar('\n');
 
-      BigInt_assignFromHexStr(oFirst, "10000000");
+      BigInt_assignFromHexStr(oSum, "100000000");
+      BigInt_assignFromHexStr(oFirst, "0");
       BigInt_assignFromHexStr(oSecond, "1");
 
       /* This addition will fail if element 1 of oSum wasn't cleared. */
