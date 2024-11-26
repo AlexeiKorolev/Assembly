@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
    oAddend2 = BigInt_new(0);
    oSum = BigInt_new(0);
    
-   iSuccessful = BigInt_assignFromHexStr(oAddend1, argv[1]);
+   iSuccessful = 1; /*BigInt_assignFromHexStr(oAddend1, argv[1]); */
    if (! iSuccessful)
    {
       fprintf(stderr, "%s: Failure during creation of addend1\n",
@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
       exit(EXIT_FAILURE);
    }      
    
-   iSuccessful = BigInt_assignFromHexStr(oAddend2, argv[2]);
+   iSuccessful = 1; /*BigInt_assignFromHexStr(oAddend2, argv[2]); */
    if (! iSuccessful)
    {
       fprintf(stderr, "%s: Failure during creation of addend2\n",
@@ -72,7 +72,17 @@ int main(int argc, char *argv[])
       fprintf(stderr, "hexadecimal digits only.\n");
       exit(EXIT_FAILURE);
    }
+
+   BigInt_assignFromHexStr(oSum, "10000000");
+   BigInt_add(oAddend1, oAddend2, oSum);
    
+
+   BigInt_assignFromHexStr(oSum, "100000000");
+   BigInt_assignFromHexStr(oAddend1, "0");
+   BigInt_assignFromHexStr(oAddend2, "1");
+
+   BigInt_add(oAddend1, oSum, oAddend2);
+   /*
    iSuccessful = BigInt_add(oAddend1, oAddend2, oSum);
    if (! iSuccessful)
    {
@@ -80,7 +90,15 @@ int main(int argc, char *argv[])
       exit(EXIT_FAILURE);
    }
    
-   BigInt_writeHex(stdout, oSum);
+   iSuccessful = BigInt_add(oAddend1, oAddend2, oSum);
+   if (! iSuccessful)
+   {
+      fprintf(stderr, "%s: Overflow during addition\n", argv[0]);
+      exit(EXIT_FAILURE);
+   }
+   */
+   
+   BigInt_writeHex(stdout, oAddend2);
    putchar('\n');
 
    BigInt_free(oSum);
