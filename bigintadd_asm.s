@@ -77,6 +77,8 @@ BigInt_add:
         str x0, [sp, oAddend1] // push oAddend1
         str x1, [sp, oAddend2] // push oAddend2
 
+        ldr x10, [x1, 8]
+        
         str x2, [sp, oSum] // push oSum
 
 
@@ -85,6 +87,11 @@ BigInt_add:
         ldr x0, [x0]
         ldr x1, [sp, oAddend2]
         ldr x1, [x1]
+
+        ldr x14, [sp, oAddend2]
+        mov x12, 0
+        add x14, x14, 8
+        ldr x13, [x14, x12, lsl 3]
         
         bl BigInt_larger
 
