@@ -187,7 +187,7 @@ endif2:
         ldr x1, [sp, lIndex]
         add x1, x1, 1 // To skip over lLength
         ldr x2, [sp, oAddend2]
-        ldr x3, [x2, x1, lsl #3] // load into x3, whatever the value stored at x2 + (x1 * 8) is
+        ldr x3, [x2, x1, lsl 3] // load into x3, whatever the value stored at x2 + (x1 * 8) is
 
 dontSetValue:   
         add x0, x0, x3
@@ -208,7 +208,7 @@ endif3:
         ldr x1, [sp, oSum]
         ldr x2, [sp, lIndex] 
         add x2, x2, 1 // To skip over lLength
-        str x0, [x1, x2, lsl #3]
+        str x0, [x1, x2, lsl 3]
 
 
         //lIndex++;
