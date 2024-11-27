@@ -127,7 +127,7 @@ static void boundaryTest(void)
       BigInt_T oFirst = createBigInt(0);
       BigInt_T oSecond = createBigInt(0);
       BigInt_T oSum = createBigInt(0);
-      BigInt_assignFromHexStr(oSum, "10000000");
+      BigInt_assignFromHexStr(oSum, "100000000");
 
       /* This addition should clear element 1 of oSum. */
       printf("Boundary test 2a: ");
@@ -139,8 +139,8 @@ static void boundaryTest(void)
       putchar('\n');
 
       BigInt_assignFromHexStr(oSum, "100000000");
-      BigInt_assignFromHexStr(oFirst, "0");
-      BigInt_assignFromHexStr(oSecond, "1");
+      /*BigInt_assignFromHexStr(oFirst, "0"); */
+      BigInt_assignFromHexStr(oSecond, "0");
 
       /* This addition will fail if element 1 of oSum wasn't cleared. */
       printf("Boundary test 2b: ");
