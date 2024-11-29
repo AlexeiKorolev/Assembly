@@ -68,6 +68,7 @@ BigInt_add:
         /*Are we allowed to declare MAX_DIGITS as an equ here, or something else?*/
         .equ MAX_DIGITS, 32768
         .equ SIZE_OF_UNSIGNED_LONG, 8
+        .equ BigInt_aulDigits_offset, 8
         
 
         
@@ -90,7 +91,7 @@ BigInt_add:
 
         ldr x14, [sp, oAddend2]
         mov x12, 0
-        add x14, x14, 8
+        add x14, x14, BigInt_aulDigits_offset
         ldr x13, [x14, x12, lsl 3]
         
         bl BigInt_larger
@@ -112,7 +113,7 @@ BigInt_add:
         ldr x0, [sp, oSum]
         add x0, x0, 8
 
-        ldr x1, 0
+        mov x1, 0
 
         mov x2, MAX_DIGITS
         mov x15, SIZE_OF_UNSIGNED_LONG
@@ -153,8 +154,9 @@ loop1:
         //ulSum += oAddend1->aulDigits[lIndex];
         ldr x0, [sp, ulSum]
         ldr x1, [sp, lIndex]
-        add x1, x1, 1 // To skip over lLength
+        // add x1, x1, 1 // To skip over lLength
         ldr x2, [sp, oAddend1]
+        add x2, x2, BigInt_aulDigits_offset // Skip over lLength 
         ldr x3, [x2, x1, lsl 3] // load into x3, whatever the value stored at x2 + (x1 * 8) is
 
         add x0, x0, x3
@@ -169,27 +171,15 @@ loop1:
         mov x0, 1
         str x0, [sp, ulCarry]
 
-endif2:
-        // check if lIndex >= oAddend2->lLength
-        mov x3, 0
-        ldr x5, [sp, lIndex]
-        ldr x1, [sp, oAddend2]
-        ldr x1, [x1]
-        
-        
-
+endif2: 
         
         //ulSum += oAddend2->aulDigits[lIndex];
-        
         ldr x0, [sp, ulSum]
-        cmp x5, x1
-        // bge dontSetValue
         ldr x1, [sp, lIndex]
-        add x1, x1, 1 // To skip over lLength
         ldr x2, [sp, oAddend2]
-        ldr x3, [x2, x1, lsl #3] // load into x3, whatever the value stored at x2 + (x1 * 8) is
-
-dontSetValue:   
+        add x2, x2, BigInt_aulDigits_offset
+        ldr x3, [x2, x1, lsl 3] // load into x3, whatever the value stored at x2 + (x1 * 8) is
+        
         add x0, x0, x3
 
         str x0, [sp, ulSum]
@@ -206,9 +196,10 @@ endif3:
         //oSum->aulDigits[lIndex] = ulSum;
         ldr x0, [sp, ulSum]
         ldr x1, [sp, oSum]
-        ldr x2, [sp, lIndex] 
-        add x2, x2, 1 // To skip over lLength
-        str x0, [x1, x2, lsl #3]
+        ldr x2, [sp, lIndex]
+        add x1, x1, BigInt_aulDigits_offset
+        // add x2, x2, 1 // To skip over lLength
+        str x0, [x1, x2, lsl 3]
 
 
         //lIndex++;
@@ -234,6 +225,7 @@ endloop1:
         cmp x0, x1
         bne endif5
 
+        // return FALSE;
         mov w0, FALSE
         ldr x30, [sp]
         add sp, sp, ADD_STACK_BYTECOUNT
@@ -247,10 +239,12 @@ endif5:
         add x2, x2, 1
         str x0, [x1, x2, lsl #3]*/
 
+
+        // SKETCHY
         mov x0, 1
         ldr x1, [sp, oSum]
         ldr x2, [sp, lSumLength]
-        add x1, x1, 8
+        add x1, x1, BigInt_aulDigits_offset
         str x0, [x1, x2, lsl 3]
 
         ldr x2, [sp, lSumLength]
