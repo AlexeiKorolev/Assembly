@@ -88,11 +88,6 @@ BigInt_add:
         ldr x0, [x0]
         ldr x1, [sp, oAddend2]
         ldr x1, [x1]
-
-        ldr x14, [sp, oAddend2]
-        mov x12, 0
-        add x14, x14, BigInt_aulDigits_offset
-        ldr x13, [x14, x12, lsl 3]
         
         bl BigInt_larger
 
@@ -102,9 +97,7 @@ BigInt_add:
         // if (oSum->lLength <= lSumLength) go to endif
         ldr x0, [sp, oSum]
         ldr x0, [x0]
-
         ldr x1, [sp, lSumLength]
-
         cmp x0, x1
         ble endif
 
@@ -124,12 +117,10 @@ BigInt_add:
 
 endif:
         // ulCarry = 0;
-        ldr x0, [sp, ulCarry]
         mov x0, 0
         str x0, [sp, ulCarry]
 
         // lIndex = 0;
-        ldr x1, [sp, lIndex]
         mov x1, 0
         str x0, [sp, lIndex]
 
@@ -137,7 +128,6 @@ loop1:
         //if(lIndex >= lSumLength) goto endloop1;
         ldr x0, [sp, lIndex]
         ldr x1, [sp, lSumLength]
-
         cmp x0, x1
         bge endloop1
 
@@ -154,7 +144,6 @@ loop1:
         //ulSum += oAddend1->aulDigits[lIndex];
         ldr x0, [sp, ulSum]
         ldr x1, [sp, lIndex]
-        // add x1, x1, 1 // To skip over lLength
         ldr x2, [sp, oAddend1]
         add x2, x2, BigInt_aulDigits_offset // Skip over lLength 
         ldr x3, [x2, x1, lsl 3] // load into x3, whatever the value stored at x2 + (x1 * 8) is
@@ -198,9 +187,7 @@ endif3:
         ldr x1, [sp, oSum]
         ldr x2, [sp, lIndex]
         add x1, x1, BigInt_aulDigits_offset
-        // add x2, x2, 1 // To skip over lLength
         str x0, [x1, x2, lsl 3]
-
 
         //lIndex++;
         ldr x0, [sp, lIndex]
@@ -209,9 +196,7 @@ endif3:
 
         b loop1
 
-
 endloop1:
-
         //if (ulCarry != 1) goto endif4;
         ldr x0, [sp, ulCarry]
         mov x1, 1
@@ -232,15 +217,8 @@ endloop1:
         ret
 
 endif5:
-        /*
-        mov x0, 1
-        ldr x1, [sp, oSum]
-        ldr x2, [sp, lSumLength]
-        add x2, x2, 1
-        str x0, [x1, x2, lsl #3]*/
 
-
-        // SKETCHY
+        
         mov x0, 1
         ldr x1, [sp, oSum]
         ldr x2, [sp, lSumLength]
