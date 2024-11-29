@@ -113,7 +113,7 @@ BigInt_add:
         ldr x0, [sp, oSum]
         add x0, x0, 8
 
-        ldr x1, 0
+        mov x1, 0
 
         mov x2, MAX_DIGITS
         mov x15, SIZE_OF_UNSIGNED_LONG
