@@ -241,7 +241,7 @@ static void boundaryTest(void)
 
       BigInt_T oFirst = createBigInt(ULONG_MAX);
       BigInt_T oSecond = createBigInt(1);
-      BigInt_T oSum = createBigInt(0);
+      BigInt_T oSum = createBigInt(50);
 
       printf("Boundary test 6a: ");
       fflush(stdout);
