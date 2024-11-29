@@ -97,7 +97,13 @@ particular, what bugs are in your submission?
 
 ------------------------------------------------------------------------
 What is your mywc program test plan?
+We tested boundary cases, including an empty file; 1 character; 2 newlines;
+2 spaces; 1 space character, 1 alphabetical character and 1 newline; and 5
+alphabetical characters. Our statement tests were ______ (
 
+Our stress test generated large files ___ (explain methodology)
+
+VERIFY IN OFFICE HOURS
 
 
 ------------------------------------------------------------------------
