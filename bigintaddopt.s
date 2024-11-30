@@ -83,7 +83,7 @@ BigInt_add:
         str OADDEND1, [sp, oAddend1]
         str OADDEND2, [sp, oAddend2]
         str OSUM, [sp, oSum]
-        str ULCARRY, [sp, ulCarry]
+        //str ULCARRY, [sp, ulCarry]
         str ULSUM, [sp, ulSum]
         str LINDEX, [sp, lIndex]
         str LSUMLENGTH, [sp, lSumLength]
@@ -146,6 +146,8 @@ endif1inline:
         mov x2, MAX_DIGITS
         lsl x2, x2, 3 // multiply by 8
         bl memset
+
+        clc //reset the carry flag
         
         /*add x0, x0, 8
 
@@ -158,7 +160,7 @@ endif1inline:
 
 endif:
         // ulCarry = 0;
-        mov ULCARRY, 0
+        //mov ULCARRY, 0
         /*mov x0, 0
         str x0, [sp, ulCarry]*/
 
@@ -181,22 +183,21 @@ loop1:
         bge endloop1*/
 
         //ulSum = ulCarry;
-        mov ULSUM, ULCARRY
-        
+        mov ULSUM, 0
         /*ldr x0, [sp, ulCarry]
         str x0, [sp, ulSum]*/
 
         
         //ulCarry = 0;
-        mov ULCARRY, 0
+        //mov ULCARRY, 0
         /*mov x0, 0
         str x0, [sp, ulCarry]*/
-
         
         //ulSum += oAddend1->aulDigits[lIndex];
         add x0, OADDEND1, BigInt_aulDigits_offset // goto aulDigits
         ldr x0, [x0, LINDEX, lsl 3] // deref lIndex-th entry
-        add ULSUM, ULSUM, x0
+        adcs ULSUM, ULSUM, x0
+
         
         
         /*ldr x0, [OADDEND1]
@@ -211,11 +212,11 @@ loop1:
         str x0, [sp, ulSum]*/
 
         //if (ulSum >= oAddend1->aulDigits[lIndex]) goto endif2;
-        cmp ULSUM, x0 // Ensure x0 contains oAddend1->aulDigits[lIndex]
-        bhs endif2
+        /*cmp ULSUM, x0 // Ensure x0 contains oAddend1->aulDigits[lIndex]
+        bhs endif2*/
 
         //ulCarry = 1;
-        mov ULCARRY, 1
+        //mov ULCARRY, 1
         /*mov x0, 1
         str x0, [sp, ulCarry]*/
 
@@ -224,7 +225,8 @@ endif2:
         //ulSum += oAddend2->aulDigits[lIndex];
         add x0, OADDEND2, BigInt_aulDigits_offset
         ldr x0, [x0, LINDEX, lsl 3]
-        add ULSUM, ULSUM, x0
+        adcs ULSUM, ULSUM, x0
+        
         
         /*ldr x0, [sp, ulSum]
         ldr x1, [sp, lIndex]
@@ -237,13 +239,13 @@ endif2:
         str x0, [sp, ulSum]*/
 
         //if (ulSum >= oAddend2->aulDigits[lIndex]) goto endif2;
-        cmp ULSUM, x0
-        bhs endif3
+        /*cmp ULSUM, x0
+        bhs endif3*/
         /*cmp x0, x3
         bhs endif3*/
 
         //ulCarry = 1;
-        mov ULCARRY, 1
+        //mov ULCARRY, 1
         /*mov x0, 1
         str x0, [sp, ulCarry]*/
 
@@ -252,7 +254,7 @@ endif3:
         add x0, OSUM, BigInt_aulDigits_offset
         // ldr x0, [x0, LINDEX, lsl 3] // No load needed
         str ULSUM, [x0, LINDEX, lsl 3]
-        
+       
         /*ldr x0, [sp, ulSum]
         ldr x1, [sp, oSum]
         ldr x2, [sp, lIndex]
@@ -271,9 +273,10 @@ endif3:
 
 endloop1:
         //if (ulCarry != 1) goto endif4;
-        mov x0, 1
+        /*mov x0, 1
         cmp ULCARRY, x0
-        bne endif4
+        bne endif4*/
+        bcc endif4 //if (ulCarry != 1) goto endif4;
         /*
         ldr x0, [sp, ulCarry]
         mov x1, 1
@@ -331,7 +334,7 @@ epilogue:
         ldr OADDEND1, [sp, oAddend1]
         ldr OADDEND2, [sp, oAddend2]
         ldr OSUM, [sp, oSum]
-        ldr ULCARRY, [sp, ulCarry]
+        //ldr ULCARRY, [sp, ulCarry]
         ldr ULSUM, [sp, ulSum]
         ldr LINDEX, [sp, lIndex]
         ldr LSUMLENGTH, [sp, lSumLength]
