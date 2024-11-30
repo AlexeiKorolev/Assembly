@@ -15,7 +15,7 @@ Authors:         VS and AK */
 
         .section .text
         
-BigInt_larger:
+/*BigInt_larger:
         .equ LARGER_STACK_BYTECOUNT, 32
         .equ lLength1, 8
         .equ lLength2, 16
@@ -53,7 +53,7 @@ endif1:
         
         ret
 
-        .size BigInt_larger, (. - BigInt_larger)
+        .size BigInt_larger, (. - BigInt_larger) */
 
         .global BigInt_add
 BigInt_add:
@@ -106,12 +106,27 @@ BigInt_add:
         ldr x0, [x0]
         ldr x1, [sp, oAddend2]
         ldr x1, [x1]*/
+
+        /*In-lining the call to BigInt_larger */
+        //if (lLength1 <= lLength2) goto startelse1;
+        cmp x0, x1
+        ble startelse1inline
+
+        mov LSUMLENGTH, x0 //lLarger = lLength1;
+        b endif1inline
         
+
+
+startelse1inline:
+        mov LSUMLENGTH, x1 //lLarger = lLength2;
+        
+
+        /*
         bl BigInt_larger
 
-        mov LSUMLENGTH, x0
+        mov LSUMLENGTH, x0*/
         //str x0, [sp, lSumLength]
-
+endif1inline: 
 
         // if (oSum->lLength <= lSumLength) go to endif
         ldr x0, [OSUM] // loading lLength into 
@@ -152,10 +167,13 @@ endif:
         /*mov x1, 0
         str x0, [sp, lIndex]*/
 
-loop1:
+
+        /*Using the guarded loop pattern*/
         //if(lIndex >= lSumLength) goto endloop1;
         cmp LINDEX, LSUMLENGTH
         bge endloop1
+loop1:
+        
         /*
         ldr x0, [sp, lIndex]
         ldr x1, [sp, lSumLength]
@@ -247,7 +265,9 @@ endif3:
         add x0, x0, 1
         str x0, [sp, lIndex]*/
 
-        b loop1
+        //if(lIndex < lSumLength) goto loop1;
+        cmp LINDEX, LSUMLENGTH
+        blt loop1
 
 endloop1:
         //if (ulCarry != 1) goto endif4;
