@@ -284,7 +284,8 @@ endif3:
         /*ldr x0, [sp, lIndex]
         add x0, x0, 1
         str x0, [sp, lIndex]*/
-        cset ULSUM, CS
+        cset ULSUM, CS //set ULSUM to be whatever is stored in the carry flag
+        //CHECK IF ALLOWED TO DO THIS? It works though!
 
         //if(lIndex < lSumLength) goto loop1;
         cmp LINDEX, LSUMLENGTH
