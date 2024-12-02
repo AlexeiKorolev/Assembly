@@ -175,6 +175,6 @@ QUESTION: Why are we accessing an out-of-bounds index? We get something non-zero
 
 Do we save the registers? If so how? Did we do it right?
 
-Stress tests are good?
-
 What happened with the stack? Why did making it 16 make it faster? Or was that just a glitch?
+
+Are we allowed to use CS and cset to deal with the carry flag when passing it into sum

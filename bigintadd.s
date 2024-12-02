@@ -212,29 +212,32 @@ endloop1:
 
         // return FALSE;
         mov w0, FALSE
-        ldr x30, [sp]
-        add sp, sp, ADD_STACK_BYTECOUNT
-        ret
+        b epilogue
 
 endif5:
 
-        
+        // oSum->aulDigits[lSumLength] = 1;
         mov x0, 1
         ldr x1, [sp, oSum]
         ldr x2, [sp, lSumLength]
         add x1, x1, BigInt_aulDigits_offset
         str x0, [x1, x2, lsl 3]
 
+        // lSumLength++;
         ldr x2, [sp, lSumLength]
         add x2, x2, 1
         str x2, [sp, lSumLength]
 
 endif4:
+        //oSum ->lLength = lSumLength;
         ldr x0, [sp, oSum]
         ldr x1, [sp, lSumLength]
         str x1, [x0]
 
+        // return TRUE;
         mov w0, TRUE
+
+epilogue:       
         ldr x30, [sp]
         add sp, sp, ADD_STACK_BYTECOUNT
         ret

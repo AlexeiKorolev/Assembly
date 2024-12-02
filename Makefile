@@ -2,7 +2,7 @@ CC=gcc217
 FLAGS=-g -O3
 
 # Dependency rules for non-file targets
-all: createtests mywcc mywcs fib_good fib fib_opt
+all: createtests mywcc mywcs fib_good fib fib_opt fib_optopt
 
 clean:
 	rm -f mywc*.txt
@@ -11,7 +11,7 @@ clean:
 	rm -f createtests
 	rm -f fib*.out
 	rm -f fib_good fib fib_opt
-	rm -f bigint.o bigintadd.o bigintaddopt.o bigintadd_good.o
+	rm -f bigint.o bigintadd.o bigintaddopt.o bigintadd_good.o bigintaddoptopt.o
 	rm -f fib.o tester.o simple.o
 
 clobber: clean
@@ -49,6 +49,9 @@ bigintadd.o: bigintadd.s
 bigintaddopt.o: bigintaddopt.s
 	$(CC) $(FLAGS) bigintaddopt.s -c
 
+bigintaddoptopt.o: bigintaddoptopt.s
+	$(CC) $(FLAGS) bigintaddoptopt.s -c
+
 bigint.o: bigint.c
 	$(CC) $(FLAGS) bigint.c -c
 
@@ -60,5 +63,8 @@ fib: bigint.o bigintadd.o fib.o
 
 fib_opt: bigint.o bigintaddopt.o fib.o
 	$(CC) $(FLAGS) bigint.o bigintaddopt.o fib.o -o fib_opt
+
+fib_optopt: bigint.o bigintaddoptopt.o fib.o
+	$(CC) $(FLAGS) bigint.o bigintaddoptopt.o fib.o -o fib_optopt
 
 .PHONY: all clobber clean
