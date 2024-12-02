@@ -80,7 +80,7 @@ regulations.
 Student 1: What is your assessment of the assignment? Was it helpful?
 Was it fun?
 
-
+good.
 
 ------------------------------------------------------------------------
 Student 2: What is your assessment of the assignment? Was it helpful?
@@ -97,11 +97,48 @@ particular, what bugs are in your submission?
 
 ------------------------------------------------------------------------
 What is your mywc program test plan?
+
 We tested boundary cases, including an empty file; 1 character; 2 newlines;
 2 spaces; 1 space character, 1 alphabetical character and 1 newline; and 5
-alphabetical characters. Our statement tests were ______ (
+alphabetical characters.
 
-Our stress test generated large files ___ (explain methodology)
+**Do we have sufficient boundary tests? Do they cover all the necessary
+cases?**
+
+Our statement tests were " word word2\n" and "aa\t\nfinishword".
+
+For the first statement test, the first character causes the blocks of
+code at line 31 and 35 to execute. THe second character causes the
+block of code at line 43 and 45 to  execute. The sixth character (a
+space character) causes the block of code at line 37 to execute (since
+at that point isspace(iChar) is True and iInWord is True). The 12th
+character causes the block of code at line 49 of mywc.c to execute.
+
+For the second statement test, similar blocks of code execute as in
+the first statement test, except the second statement test also causes
+line 53 to execute. Thus, between the two statement tests, we cause
+all blocks of code within mywc.c to execute.
+
+**For statement tests, do we also have to test all combinations/blocks
+of code NOT being executed in combination with others **
+
+
+Our stress test generated a large file (the number of characters for
+the file was MAX_STRING_LENGTH, determined to be 50,000). Additionally,
+the stress test file was only allowed to have a maximum number of
+newline characters of MAX_LINE_COUNT (determined to be 1,000). For each
+character generated there was a 1/3 probability that the character was
+a newline character (if there are no more newline characters allowed,
+then no character is selected on that iteration), 1/3 probability that
+the character was a space character, and 1/3 probability that the
+character was alphanumeric/symbols/tabs (ASCII hex characters 0x09 or
+0x21 to 0x7E (inclusive)).
+
+**Do we have to include more stress tests? Is it okay to include tabs
+and symbols? **
+
+
+
 
 VERIFY IN OFFICE HOURS
 
@@ -118,7 +155,7 @@ Part 2d:  8.191111  seconds
 
 Part 2e:  3.396241 seconds
 
-Part 2f:  _____ seconds
+Part 2f:  1.829509 seconds
 
 
 
@@ -126,7 +163,6 @@ Part 2f:  _____ seconds
 
 
 Questions to ask:
-How does format string work
 
 In assembly translation:
     Did we do fprintf correctly?
@@ -135,9 +171,10 @@ In assembly translation:
     What is MAIN_STACK_BYTECOUNT and why is it 16
 
 
-In testing:
-        Are statement tests supposed to test every combination
-
-        Do we need multiple stress tests (is the one stress test that we have good)
-
 QUESTION: Why are we accessing an out-of-bounds index? We get something non-zero, and it seems that it isnt an asm problem
+
+Do we save the registers? If so how? Did we do it right?
+
+Stress tests are good?
+
+What happened with the stack? Why did making it 16 make it faster? Or was that just a glitch?

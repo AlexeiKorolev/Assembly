@@ -25,7 +25,9 @@ int main(void)
          "\n\n",
          "  ",
          " a\n ",
-         "abcde"
+         "abcde",
+         "word1\nword2",
+         "word1\tword2"
       };
       char fileName[MAX_STRING_LENGTH];
       FILE * file;
@@ -39,7 +41,6 @@ int main(void)
          i += 1;
          count++;
       }
-      fprintf(stderr, "LAST INDEX FOR BOUNDARY TESTS : {%d}\n", (int)i);
    }
 
    

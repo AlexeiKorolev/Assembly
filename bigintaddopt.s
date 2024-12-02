@@ -17,7 +17,7 @@ Authors:         VS and AK */
 
         .global BigInt_add
 BigInt_add:
-        .equ ADD_STACK_BYTECOUNT, 16
+        .equ ADD_STACK_BYTECOUNT, 64 // Why does this make it better?
         OADDEND1 .req x19
         OADDEND2 .req x20
         OSUM .req x21
@@ -25,13 +25,13 @@ BigInt_add:
         ULSUM .req x23
         LINDEX .req x24
         LSUMLENGTH .req x25
-        /*equ oAddend1, 8
+        .equ oAddend1, 8
         .equ oAddend2, 16
         .equ oSum, 24
         .equ ulCarry, 32
         .equ ulSum, 40
         .equ lIndex, 48
-        .equ lSumLength, 56*/
+        .equ lSumLength, 56
         .equ MAX_DIGITS, 32768
         .equ SIZE_OF_UNSIGNED_LONG, 8
         .equ BigInt_aulDigits_offset, 8
@@ -40,13 +40,13 @@ BigInt_add:
         
         sub sp, sp, ADD_STACK_BYTECOUNT
         str x30, [sp]
-        /*str OADDEND1, [sp, oAddend1]
+        str OADDEND1, [sp, oAddend1]
         str OADDEND2, [sp, oAddend2]
         str OSUM, [sp, oSum]
         //str ULCARRY, [sp, ulCarry]
         str ULSUM, [sp, ulSum]
         str LINDEX, [sp, lIndex]
-        str LSUMLENGTH, [sp, lSumLength]*/
+        str LSUMLENGTH, [sp, lSumLength]
         
 
         mov OADDEND1, x0
@@ -182,13 +182,13 @@ endif4:
         // return TRUE;
         mov w0, TRUE
 epilogue:
-        /*ldr OADDEND1, [sp, oAddend1]
+        ldr OADDEND1, [sp, oAddend1]
         ldr OADDEND2, [sp, oAddend2]
         ldr OSUM, [sp, oSum]
         //ldr ULCARRY, [sp, ulCarry]
         ldr ULSUM, [sp, ulSum]
         ldr LINDEX, [sp, lIndex]
-        ldr LSUMLENGTH, [sp, lSumLength]*/
+        ldr LSUMLENGTH, [sp, lSumLength]
         ldr x30, [sp]
         add sp, sp, ADD_STACK_BYTECOUNT
         ret

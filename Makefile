@@ -11,6 +11,8 @@ clean:
 	rm -f createtests
 	rm -f fib*.out
 	rm -f fib_good fib fib_opt
+	rm -f bigint.o bigintadd.o bigintaddopt.o bigintadd_good.o
+	rm -f fib.o tester.o simple.o
 
 clobber: clean
 	rm -f *~ \#*\#
