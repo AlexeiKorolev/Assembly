@@ -1,5 +1,5 @@
 CC=gcc217
-FLAGS=-g
+FLAGS=-g -O3
 
 # Dependency rules for non-file targets
 all: createtests mywcc mywcs fib_good fib fib_opt
