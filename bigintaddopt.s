@@ -166,7 +166,6 @@ endloop1:
 endif5:
 
         // oSum->aulDigits[lSumLength] = 1;
-        // add x0, OSUM, BigInt_aulDigits_offset
         mov x1, 1
         str x1, [OSUM, LSUMLENGTH, lsl 3]
 
