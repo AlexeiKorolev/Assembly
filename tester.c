@@ -22,12 +22,16 @@ int main(void)
       char* tests[] = {
          "",
          "a",
-         "\n\n",
-         "  ",
-         " a\n ",
-         "abcde",
-         "word1\nword2",
-         "word1\tword2"
+         "aa",
+         "a a a",
+         "\n",
+         " \n",
+         "word \n",
+         "word1 word2 word3 \n",
+         "\n\n\n",
+         "word1 \n\n\n\n",
+         "word1 \nword2\nword3\n\n",
+         
       };
       char fileName[MAX_STRING_LENGTH];
       FILE * file;

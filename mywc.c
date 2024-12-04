@@ -30,7 +30,7 @@ int main(void)
    while ((iChar = getchar()) != EOF)
    {
       lCharCount++;
-      fprintf(stderr, "Reached here 1\n");
+      /*fprintf(stderr, "Reached here 1\n");*/
       
 
       if (isspace(iChar))
@@ -39,7 +39,7 @@ int main(void)
          {
             lWordCount++;
             iInWord = FALSE;
-            fprintf(stderr, "Reached here 2\n");
+            /*fprintf(stderr, "Reached here 2\n");*/
       
             
          }
@@ -48,7 +48,7 @@ int main(void)
       {
          if (! iInWord) {
             iInWord = TRUE;
-            fprintf(stderr, "Reached here 3\n");
+            /*fprintf(stderr, "Reached here 3\n");*/
       
          }
          
@@ -56,14 +56,14 @@ int main(void)
 
       if (iChar == '\n') {
          lLineCount++;
-         fprintf(stderr, "Reached here 4\n");
+         /*fprintf(stderr, "Reached here 4\n");*/
       
       }
    }
 
    if (iInWord) {
       lWordCount++;
-      fprintf(stderr, "Reached here 5\n");
+      /*fprintf(stderr, "Reached here 5\n");*/
       
    }
 

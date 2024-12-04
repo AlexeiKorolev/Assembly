@@ -17,6 +17,23 @@ information given in the "Policies" web page (also available on armlab
 in the file ~cos217/AuthorizedSourcesList ) to this section of the
 readme file, and edit it as appropriate.
 
+The course's lectures.
+
+The course's precepts.
+
+The course's website.
+
+Documents that are referenced directly by the course's website. Such documents include the course's lecture slides and precept handouts.
+
+The course's textbooks and reference manuals.
+
+The man pages on the armlab cluster.
+
+The course's current staff members outside of class time through office hours.
+
+The course's current staff members outside of class time through Ed.
+
+Current Intro Lab TAs through visits to the Intro COS Lab.
 
 
 ------------------------------------------------------------------------
@@ -26,7 +43,23 @@ information given in the "Policies" web page (also available on armlab
 in the file ~cos217/AuthorizedSourcesList ) to this section of the
 readme file, and edit it as appropriate.
 
+The course's lectures.
 
+The course's precepts.
+
+The course's website.
+
+Documents that are referenced directly by the course's website. Such documents include the course's lecture slides and precept handouts.
+
+The course's textbooks and reference manuals.
+
+The man pages on the armlab cluster.
+
+The course's current staff members outside of class time through office hours.
+
+The course's current staff members outside of class time through Ed.
+
+Current Intro Lab TAs through visits to the Intro COS Lab.
 
 ------------------------------------------------------------------------
 Student 1: What unauthorized sources of information did you use to
@@ -40,7 +73,7 @@ nature of the interaction, may additionally require the interaction
 being reported to the Committee on Discipline. Write "None" if you used
 no unauthorized sources of information.
 
-
+None
 
 ------------------------------------------------------------------------
 Student 2: What unauthorized sources of information did you use to
@@ -54,7 +87,7 @@ nature of the interaction, may additionally require the interaction
 being reported to the Committee on Discipline. Write "None" if you used
 no unauthorized sources of information.
 
-
+None
 
 ------------------------------------------------------------------------
 Student 1: In fulfillment of the requirement from section 2.4.3 of the
@@ -64,7 +97,7 @@ guide, enter your name in the space below the following affirmation:
 This paper represents my own work in accordance with University
 regulations.
 
-
+Venkat Subramanian
 
 ------------------------------------------------------------------------
 Student 2: In fulfillment of the requirement from section 2.4.3 of the
@@ -74,26 +107,30 @@ guide, enter your name in the space below the following affirmation:
 This paper represents my own work in accordance with University
 regulations.
 
-
+Alexei Korolev
 
 ------------------------------------------------------------------------
 Student 1: What is your assessment of the assignment? Was it helpful?
 Was it fun?
 
-good.
+I found this assignment very educational. It was very insightful to 
+practice my debugging skills, and I did find it fun to be able to accurately
+compute large additions.
 
 ------------------------------------------------------------------------
 Student 2: What is your assessment of the assignment? Was it helpful?
 Was it fun?
 
-
+This assignment was both informative and fun. I learned a lot about assembly
+language and how it relates to C in terms of performance. It was fun
+to be able to "beat" the compiler in performance.
 
 ------------------------------------------------------------------------
 (optional) What information can you provide about your submission that
 will help your grader to grade it in the most favorable light? In
 particular, what bugs are in your submission?
 
-
+We did not find any bugs in our submission and we did complete part 2f.
 
 ------------------------------------------------------------------------
 What is your mywc program test plan?
@@ -175,6 +212,6 @@ QUESTION: Why are we accessing an out-of-bounds index? We get something non-zero
 
 Do we save the registers? If so how? Did we do it right?
 
-Stress tests are good?
-
 What happened with the stack? Why did making it 16 make it faster? Or was that just a glitch?
+
+Are we allowed to use CS and cset to deal with the carry flag when passing it into sum
