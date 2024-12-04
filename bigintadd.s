@@ -65,7 +65,6 @@ BigInt_add:
         .equ ulSum, 40
         .equ lIndex, 48
         .equ lSumLength, 56
-        /*Are we allowed to declare MAX_DIGITS as an equ here, or something else?*/
         .equ MAX_DIGITS, 32768
         .equ SIZE_OF_UNSIGNED_LONG, 8
         .equ BigInt_aulDigits_offset, 8

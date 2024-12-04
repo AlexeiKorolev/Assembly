@@ -1,5 +1,5 @@
-/* bigintadd.s
-Authors:         VS and AK */
+/* bigintaddopt.s
+Authors:         Venkat Subramanian and Alexei Korolev */
 
 
         .equ FALSE, 0
@@ -203,21 +203,18 @@ endloop1:
         b epilogue
 
 endif5:
-
         // oSum->aulDigits[lSumLength] = 1;
-
         add x0, OSUM, BigInt_aulDigits_offset
         mov x1, 1
         str x1, [x0, LSUMLENGTH, lsl 3]
 
         // lSumLength++;
         add LSUMLENGTH, LSUMLENGTH, 1
-
 endif4:
+        
         // oSum->lLength = lSumLength;
         str LSUMLENGTH, [OSUM] 
        
-
         // return TRUE;
         mov w0, TRUE
 epilogue:

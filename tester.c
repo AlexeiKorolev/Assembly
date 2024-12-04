@@ -13,7 +13,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 
-enum {MAX_STRING_LENGTH = 50000, MAX_LINE_COUNT = 1000};
+enum {MAX_STRING_LENGTH = 50000, MAX_LINE_COUNT = 700};
 
 int main(void)
 {

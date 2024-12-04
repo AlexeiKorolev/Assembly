@@ -1,5 +1,5 @@
 /* bigintaddoptopt.s
-Authors:         VS and AK */
+Authors:         Venkat Subramanian and Alexei Korolev */
 
 
         .equ FALSE, 0
@@ -89,7 +89,7 @@ endif1inline:
         mov x0, OSUM
         mov x1, 0
         mov x2, MAX_DIGITS
-        lsl x2, x2, 3 // multiply by 8
+        lsl x2, x2, 3
         bl memset
 
 endif:
@@ -99,7 +99,7 @@ endif:
         mov ULSUM, 0
 
         
-        /*Using the guarded loop pattern*/
+        //Using the guarded loop pattern
         //if(lIndex >= lSumLength) goto endloop1;
         cmp LINDEX, LSUMLENGTH
         bge endloop1
@@ -140,7 +140,7 @@ endloop1:
         //if (ulCarry != 1) goto endif4;
         mov x0, 1
         cmp ULSUM, x0
-        bne endif4 //if (ulCarry != 1) goto endif4;
+        bne endif4
         
         //if (lSumLength != MAX_DIGITS) goto endif5;
         mov x0, MAX_DIGITS
@@ -150,9 +150,6 @@ endloop1:
         // return FALSE;
         mov w0, FALSE
         b epilogue
-        /*ldr x30, [sp]
-        add sp, sp, ADD_STACK_BYTECOUNT
-        ret*/
 
 endif5:
 

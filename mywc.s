@@ -99,7 +99,6 @@ endif1:
         //if (iChar != '\n') goto endif2;
         adr x1, iChar
         ldr w0, [x1]
-        // CHECK IF WE CAN HARDCODE ASCII
         mov w3, 10
         cmp w0, w3
         bne endif2
